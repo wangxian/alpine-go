@@ -12,4 +12,4 @@ ENV GOPATH /app
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 EXPOSE 3000
-CMD ["./startup.sh"]
+CMD ["/bin/sh", "./startup.sh"]
