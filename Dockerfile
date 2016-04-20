@@ -6,6 +6,7 @@ COPY . .
 
 RUN apk add --update curl go
 RUN apk add tzdata && cp /usr/share/zoneinfo/PRC /etc/localtime && echo "PRC" > /etc/timezone && apk del tzdata
+RUN mkdir -p /usr/lib/go/lib/time && mv zoneinfo.zip /usr/lib/go/lib/time
 RUN rm /var/cache/apk/*
 
 ENV GOPATH /app
