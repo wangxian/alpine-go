@@ -40,8 +40,7 @@ RUN set -ex \
   && apk del .build-deps
 
 # 1:fix tzdata timezone alpine
-RUN apk add tzdata && cp /usr/share/zoneinfo/PRC /etc/localtime && echo "PRC" > /etc/timezone && apk del tzdata
-RUN rm /var/cache/apk/*
+RUN apk add --no-cache tzdata && cp /usr/share/zoneinfo/PRC /etc/localtime && echo "PRC" > /etc/timezone && apk del tzdata
 
 # 2:modify
 ENV GOPATH /app
@@ -49,7 +48,4 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH
-
-# 3:add
-CMD ["/bin/sh", "./startup.sh"]
 
