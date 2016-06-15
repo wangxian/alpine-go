@@ -13,7 +13,7 @@ COPY no-pic.patch /
 
 RUN set -ex \
   && apk add --no-cache --virtual .build-deps \
-    bash \
+    bash git curl \
     ca-certificates \
     gcc \
     musl-dev \
