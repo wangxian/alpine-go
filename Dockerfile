@@ -2,14 +2,11 @@ FROM alpine:3.3
 
 ENV GOLANG_VERSION 1.7
 ENV GOLANG_SRC_URL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
-ENV GOLANG_SRC_SHA256 787b0b750d037016a30c6ed05a8a70a91b2e9db4bd9b1a2453aa502a63f1bccc
+ENV GOLANG_SRC_SHA256 72680c16ba0891fcf2ccf46d0f809e4ecf47bbf889f5d884ccb54c5e9a17e1c0
 
 ENV GOLANG_BOOTSTRAP_VERSION 1.4.3
 ENV GOLANG_BOOTSTRAP_URL https://golang.org/dl/go$GOLANG_BOOTSTRAP_VERSION.src.tar.gz
 ENV GOLANG_BOOTSTRAP_SHA1 486db10dc571a55c8d795365070f66d343458c48
-
-# https://golang.org/issue/14851
-COPY no-pic.patch /
 
 RUN set -ex \
   && apk add --no-cache --virtual .build-deps \
@@ -33,10 +30,9 @@ RUN set -ex \
   && tar -C /usr/local -xzf golang.tar.gz \
   && rm golang.tar.gz \
   && cd /usr/local/go/src \
-  && patch -p2 -i /no-pic.patch \
   && ./make.bash \
   \
-  && rm -rf /usr/local/bootstrap /usr/local/go/pkg/bootstrap /*.patch \
+  && rm -rf /usr/local/bootstrap /usr/local/go/pkg/bootstrap \
   && apk del .build-deps
 
 # 1:fix tzdata timezone alpine
