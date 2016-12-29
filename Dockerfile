@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.4
 
 ENV GOLANG_VERSION 1.7.4
 ENV GOLANG_SRC_URL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
@@ -36,7 +36,7 @@ RUN set -ex \
   && apk del .build-deps
 
 # 1:fix tzdata timezone alpine
-RUN apk add --no-cache git curl tzdata && cp /usr/share/zoneinfo/PRC /etc/localtime && echo "PRC" > /etc/timezone && apk del tzdata
+RUN apk add --no-cache tzdata && cp /usr/share/zoneinfo/PRC /etc/localtime && echo "PRC" > /etc/timezone && apk del tzdata
 
 # 2:modify
 ENV GOPATH /app
