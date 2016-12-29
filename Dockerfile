@@ -39,7 +39,7 @@ RUN set -ex \
   && apk del .build-deps
 
 # 1:fix tzdata timezone alpine
-RUN apk add --no-cache tzdata && cp /usr/share/zoneinfo/PRC /etc/localtime && echo "PRC" > /etc/timezone && apk del tzdata
+RUN apk add --no-cache curl tzdata && cp /usr/share/zoneinfo/PRC /etc/localtime && echo "PRC" > /etc/timezone && apk del tzdata
 
 # 2:modify
 ENV GOPATH /app
