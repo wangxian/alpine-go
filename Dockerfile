@@ -1,8 +1,8 @@
-FROM alpine:latest
+FROM alpine:3.6
 
 ENV GOLANG_VERSION 1.8.3
 ENV GOLANG_SRC_URL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
-ENV GOLANG_SRC_SHA256 4c189111e9ba651a2bb3ee868aa881fab36b2f2da3409e80885ca758a6b614cc
+ENV GOLANG_SRC_SHA256 5f5dea2447e7dcfdc50fa6b94c512e58bfba5673c039259fd843f68829d99fa6
 
 # ENV GOLANG_BOOTSTRAP_VERSION 1.4.3
 # ENV GOLANG_BOOTSTRAP_URL https://golang.org/dl/go$GOLANG_BOOTSTRAP_VERSION.src.tar.gz
@@ -25,7 +25,7 @@ RUN set -ex \
   && tar -C /usr/local/bootstrap -xzf golang.tar.gz \
   && rm golang.tar.gz \
   && cd /usr/local/bootstrap/go/src \
-  && ./make.bash \
+  && sh ./make.bash \
   && export GOROOT_BOOTSTRAP=/usr/local/bootstrap/go \
   \
   && wget -q "$GOLANG_SRC_URL" -O golang.tar.gz \
