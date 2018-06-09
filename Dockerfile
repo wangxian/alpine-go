@@ -1,4 +1,4 @@
-FROM golang:1.9.7-alpine3.6
+FROM golang:1.10.3-alpine3.7
 
 # 0:clean offical golang setting
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
