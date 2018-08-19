@@ -5,7 +5,7 @@ ENV GOLANG_SRC_URL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
 ENV GOLANG_SRC_SHA256 5f5dea2447e7dcfdc50fa6b94c512e58bfba5673c039259fd843f688
 
 ENV GOLANG_BOOTSTRAP_URL https://storage.googleapis.com/golang/go1.4-bootstrap-20171003.tar.gz
-ENV GOLANG_BOOTSTRAP_SHA1 dbf727a4b0e365bf88d97cbfde590016
+ENV GOLANG_BOOTSTRAP_SHA1 881f0c980a6d6f4e0427a86237298dd9717d8ecf
 
 RUN set -ex \
   && apk add --no-cache --virtual .build-deps \
