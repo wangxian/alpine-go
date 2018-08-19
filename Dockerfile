@@ -1,11 +1,11 @@
-FROM alpine:3.6
+FROM alpine:3.8
 
 ENV GOLANG_VERSION 1.10.3
 ENV GOLANG_SRC_URL https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
 ENV GOLANG_SRC_SHA256 5f5dea2447e7dcfdc50fa6b94c512e58bfba5673c039259fd843f688
 
-ENV GOLANG_BOOTSTRAP_URL https://storage.googleapis.com/golang/go1.4-bootstrap-20161024.tar.gz
-ENV GOLANG_BOOTSTRAP_SHA1 47e02e41aa99dea899b65ebf7b50ec706141be8c
+ENV GOLANG_BOOTSTRAP_URL https://storage.googleapis.com/golang/go1.4-bootstrap-20171003.tar.gz
+ENV GOLANG_BOOTSTRAP_SHA1 dbf727a4b0e365bf88d97cbfde590016
 
 RUN set -ex \
   && apk add --no-cache --virtual .build-deps \
