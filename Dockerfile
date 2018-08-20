@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-RUN apk add --update curl go musl-dev \
+RUN apk add --update curl go bash musl-dev \
  && rm /var/cache/apk/*
 
 # 1:fix tzdata timezone alpine
