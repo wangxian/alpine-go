@@ -9,12 +9,12 @@ ENV GOLANG_BOOTSTRAP_SHA1 881f0c980a6d6f4e0427a86237298dd9717d8ecf
 
 RUN set -ex \
   && apk add --no-cache --virtual .build-deps \
-    bash \
     ca-certificates \
     gcc \
     musl-dev \
     openssl \
   \
+  && apk add --no-cache wget curl bash \
   && mkdir -p /usr/local/bootstrap \
   && wget -q "$GOLANG_BOOTSTRAP_URL" -O golang.tar.gz \
   && echo "$GOLANG_BOOTSTRAP_SHA1  golang.tar.gz" | sha1sum -c - \
